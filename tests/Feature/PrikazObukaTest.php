@@ -62,12 +62,14 @@ class PrikazObukaTest extends TestCase
             'user_id' => $zaposleni->id,
             'obuka_id' => $obuka1->id,
             'status' => 'aktivna',
+            'datum' => now(),
         ]);
 
         Prijava::create([
             'user_id' => $zaposleni->id,
             'obuka_id' => $obuka2->id,
             'status' => 'aktivna',
+            'datum' => now(),
         ]);
 
         $response = $this->actingAs($zaposleni)
