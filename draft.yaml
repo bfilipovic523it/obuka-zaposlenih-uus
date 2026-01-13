@@ -1,0 +1,58 @@
+models:
+  Uloga:
+    naziv: string:50
+  
+  Sektor:
+    naziv: string:150
+
+  Materijal:
+    naziv: string:150
+    user_id: id foreign:User
+  
+  Obuka:
+    naziv: string:150
+    opis: text:250
+    broj_mesta: integer
+    datum_pocetka: date
+    datum_zavrsetka: date
+    user_id: id foreign:User
+    sektor_id: id foreign:Sektor
+    materijal_id: id foreign:Materijal
+
+  Prijava:
+    status: string:50
+    datum: date
+    user_id: id foreign:User
+    obuka_id: id foreign:Obuka
+
+  Test:
+    ocena: integer
+    prijava_id: id foreign:Prijava
+    obuka_id: id foreign:Obuka
+
+  Sertifikat:
+    kod: string:20 unique
+    datum_izdavanja: date
+    prijava_id: id foreign:Prijava
+
+controllers:
+  Uloga:
+    resource
+  
+  Sektor:
+    resource
+  
+  Materijal:
+    resource
+
+  Obuka:
+    resource
+  
+  Prijava:
+    resource
+
+  Test:
+    resource
+  
+  Sertifikat:
+    resource

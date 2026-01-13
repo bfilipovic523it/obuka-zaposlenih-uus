@@ -1,0 +1,97 @@
+created:
+    - app/Http/Controllers/UlogaController.php
+    - app/Http/Controllers/SektorController.php
+    - app/Http/Controllers/UserController.php
+    - app/Http/Controllers/MaterijalController.php
+    - app/Http/Controllers/ObukaController.php
+    - app/Http/Controllers/PrijavaController.php
+    - app/Http/Controllers/TestController.php
+    - app/Http/Controllers/SertifikatController.php
+    - database/factories/UlogaFactory.php
+    - database/factories/SektorFactory.php
+    - database/factories/MaterijalFactory.php
+    - database/factories/ObukaFactory.php
+    - database/factories/PrijavaFactory.php
+    - database/factories/TestFactory.php
+    - database/factories/SertifikatFactory.php
+    - database/migrations/2026_01_05_144421_create_ulogas_table.php
+    - database/migrations/2026_01_05_144422_create_sektors_table.php
+    - database/migrations/2026_01_05_144423_create_materijals_table.php
+    - database/migrations/2026_01_05_144424_create_obukas_table.php
+    - database/migrations/2026_01_05_144425_create_prijavas_table.php
+    - database/migrations/2026_01_05_144426_create_tests_table.php
+    - database/migrations/2026_01_05_144427_create_sertifikats_table.php
+    - app/Models/Uloga.php
+    - app/Models/Sektor.php
+    - app/Models/Materijal.php
+    - app/Models/Obuka.php
+    - app/Models/Prijava.php
+    - app/Models/Test.php
+    - app/Models/Sertifikat.php
+    - tests/Feature/Http/Controllers/UlogaControllerTest.php
+    - tests/Feature/Http/Controllers/SektorControllerTest.php
+    - tests/Feature/Http/Controllers/UserControllerTest.php
+    - tests/Feature/Http/Controllers/MaterijalControllerTest.php
+    - tests/Feature/Http/Controllers/ObukaControllerTest.php
+    - tests/Feature/Http/Controllers/PrijavaControllerTest.php
+    - tests/Feature/Http/Controllers/TestControllerTest.php
+    - tests/Feature/Http/Controllers/SertifikatControllerTest.php
+    - app/Http/Requests/UlogaStoreRequest.php
+    - app/Http/Requests/UlogaUpdateRequest.php
+    - app/Http/Requests/SektorStoreRequest.php
+    - app/Http/Requests/SektorUpdateRequest.php
+    - app/Http/Requests/UserStoreRequest.php
+    - app/Http/Requests/UserUpdateRequest.php
+    - app/Http/Requests/MaterijalStoreRequest.php
+    - app/Http/Requests/MaterijalUpdateRequest.php
+    - app/Http/Requests/ObukaStoreRequest.php
+    - app/Http/Requests/ObukaUpdateRequest.php
+    - app/Http/Requests/PrijavaStoreRequest.php
+    - app/Http/Requests/PrijavaUpdateRequest.php
+    - app/Http/Requests/TestStoreRequest.php
+    - app/Http/Requests/TestUpdateRequest.php
+    - app/Http/Requests/SertifikatStoreRequest.php
+    - app/Http/Requests/SertifikatUpdateRequest.php
+    - resources/views/uloga/index.blade.php
+    - resources/views/uloga/create.blade.php
+    - resources/views/uloga/show.blade.php
+    - resources/views/uloga/edit.blade.php
+    - resources/views/sektor/index.blade.php
+    - resources/views/sektor/create.blade.php
+    - resources/views/sektor/show.blade.php
+    - resources/views/sektor/edit.blade.php
+    - resources/views/user/index.blade.php
+    - resources/views/user/create.blade.php
+    - resources/views/user/show.blade.php
+    - resources/views/user/edit.blade.php
+    - resources/views/materijal/index.blade.php
+    - resources/views/materijal/create.blade.php
+    - resources/views/materijal/show.blade.php
+    - resources/views/materijal/edit.blade.php
+    - resources/views/obuka/index.blade.php
+    - resources/views/obuka/create.blade.php
+    - resources/views/obuka/show.blade.php
+    - resources/views/obuka/edit.blade.php
+    - resources/views/prijava/index.blade.php
+    - resources/views/prijava/create.blade.php
+    - resources/views/prijava/show.blade.php
+    - resources/views/prijava/edit.blade.php
+    - resources/views/test/index.blade.php
+    - resources/views/test/create.blade.php
+    - resources/views/test/show.blade.php
+    - resources/views/test/edit.blade.php
+    - resources/views/sertifikat/index.blade.php
+    - resources/views/sertifikat/create.blade.php
+    - resources/views/sertifikat/show.blade.php
+    - resources/views/sertifikat/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
+    Uloga: { naziv: 'string:50' }
+    Sektor: { naziv: 'string:150' }
+    Materijal: { naziv: 'string:150', user_id: 'id foreign:User' }
+    Obuka: { naziv: 'string:150', opis: 'text:250', broj_mesta: integer, datum_pocetka: date, datum_zavrsetka: date, user_id: 'id foreign:User', sektor_id: 'id foreign:Sektor', materijal_id: 'id foreign:Materijal' }
+    Prijava: { status: 'string:50', datum: date, user_id: 'id foreign:User', obuka_id: 'id foreign:Obuka' }
+    Test: { ocena: integer, prijava_id: 'id foreign:Prijava', obuka_id: 'id foreign:Obuka' }
+    Sertifikat: { kod: 'string:20 unique', datum_izdavanja: date, prijava_id: 'id foreign:Prijava' }
